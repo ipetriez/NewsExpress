@@ -7,13 +7,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SourcesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .cyan
+        NewsAPIInteractor.shared.getSources(from: NewsAPIRequestPath.sources.fullPath()) { result in
+            print(result)
+        }
     }
-
 
 }
 
