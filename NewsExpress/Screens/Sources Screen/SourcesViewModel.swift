@@ -47,7 +47,7 @@ class SourcesViewModel: SourceViewModelDelegate {
     }
     
     func getHeadlinesForSource(at index: Int, completion: @escaping (HeadlinesViewModel) -> Void) {
-        NewsAPIInteractor.shared.getHeadlines(from: NewsAPIRequestPath.headlines.fullPath(), for: nameOfSource(at: index)) { result in
+        NewsAPIInteractor.shared.getHeadlines(from: NewsAPIRequestPath.headlines.fullPath(), for: sources[index].id) { result in
             switch result {
             case .success(let response):
                 if let headlinesResponse = response {

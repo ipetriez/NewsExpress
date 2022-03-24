@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70006AE327ECC88700B3CC0B /* HeadlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70006AE227ECC88700B3CC0B /* HeadlineTableViewCell.swift */; };
 		7020820627EB971800931B33 /* NewsAPIInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7020820527EB971800931B33 /* NewsAPIInteractor.swift */; };
 		7020820A27EB9F9800931B33 /* SourcesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7020820927EB9F9800931B33 /* SourcesResponse.swift */; };
 		7020820F27EBA31700931B33 /* SourcesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7020820E27EBA31700931B33 /* SourcesViewModel.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		70006AE227ECC88700B3CC0B /* HeadlineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineTableViewCell.swift; sourceTree = "<group>"; };
 		7020820527EB971800931B33 /* NewsAPIInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIInteractor.swift; sourceTree = "<group>"; };
 		7020820927EB9F9800931B33 /* SourcesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesResponse.swift; sourceTree = "<group>"; };
 		7020820E27EBA31700931B33 /* SourcesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewModel.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				706762FC27EBBBFA00627A33 /* HeadlinesViewController.swift */,
+				70006AE227ECC88700B3CC0B /* HeadlineTableViewCell.swift */,
 				706762FE27EBBC0E00627A33 /* HeadlinesViewModel.swift */,
 			);
 			path = "Headlines Screen";
@@ -337,6 +340,7 @@
 				7020820627EB971800931B33 /* NewsAPIInteractor.swift in Sources */,
 				70A4AB7827EB84CE006FE2AB /* SourcesViewController.swift in Sources */,
 				706762FD27EBBBFA00627A33 /* HeadlinesViewController.swift in Sources */,
+				70006AE327ECC88700B3CC0B /* HeadlineTableViewCell.swift in Sources */,
 				70A4AB7427EB84CE006FE2AB /* AppDelegate.swift in Sources */,
 				70A4ABA527EB887E006FE2AB /* NetworkService.swift in Sources */,
 				7067630127EC38A400627A33 /* HeadlinesResponse.swift in Sources */,

@@ -11,11 +11,11 @@ class HeadlinesViewController: UITableViewController {
     
     // MARK: - Private properties
     
-    private let viewModel: HeadlinesViewModel
+    private let viewModel: HeadlinesViewModelDelegate
     
     // MARK: - Initialization
     
-    init(viewModel: HeadlinesViewModel) {
+    init(viewModel: HeadlinesViewModelDelegate) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -29,6 +29,7 @@ class HeadlinesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(HeadlineTableViewCell.self, forCellReuseIdentifier: HeadlineTableViewCell.reuseIdentifier)
     }
     
     // MARK: - Private methods
@@ -42,12 +43,13 @@ class HeadlinesViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.numberOfRows
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HeadlineTableViewCell.reuseIdentifier, for: indexPath) as? HeadlineTableViewCell else { return UITableViewCell() }
+        viewModel.configure(cell, at: indexPath)
         return cell
     }
 }
