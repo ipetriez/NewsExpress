@@ -10,6 +10,7 @@ import UIKit
 protocol HeadlinesViewModelDelegate {
     var numberOfRows: Int { get }
     func configure(_ cell: HeadlineTableViewCell, at indexPath: IndexPath)
+    func viewModelForArticle(at index: Int) -> NewsDetailsViewModel
 }
 
 class HeadlinesViewModel: HeadlinesViewModelDelegate {
@@ -32,7 +33,7 @@ class HeadlinesViewModel: HeadlinesViewModelDelegate {
     
     // MARK: - Private methods
     
-    private func assignImage(from url: String, to cell: HeadlineTableViewCell) {
+    private func setImage(from url: String, to cell: HeadlineTableViewCell) {
         cell.activityIndicator.startAnimating()
         guard let url = URL(string: url) else { return }
         DispatchQueue.global(qos: .userInitiated).async {
@@ -50,9 +51,13 @@ class HeadlinesViewModel: HeadlinesViewModelDelegate {
     
     func configure(_ cell: HeadlineTableViewCell, at indexPath: IndexPath) {
         let article = articles[indexPath.row]
-        assignImage(from: article.urlToImage, to: cell)
+        setImage(from: article.urlToImage, to: cell)
         cell.titleLabel.text = article.title
         cell.descriptionLabel.text = article.description
         cell.dateLabel.text = article.publishedAt.components(separatedBy: "T").first
+    }
+    
+    func viewModelForArticle(at index: Int) -> NewsDetailsViewModel {
+        NewsDetailsViewModel(with: articles[index])
     }
 }

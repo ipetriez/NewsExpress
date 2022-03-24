@@ -40,6 +40,7 @@ class HeadlineTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .headline)
+        label.numberOfLines = 0
         return label
     }()
     
@@ -47,6 +48,7 @@ class HeadlineTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .body)
+        label.numberOfLines = 0
         return label
     }()
     
