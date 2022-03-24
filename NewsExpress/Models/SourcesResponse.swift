@@ -9,10 +9,10 @@ import Foundation
 
 struct SourcesResponse: Codable {
     let status: String
-    let sources: [Sources]
+    let sources: [Source]
 }
 
-struct Sources: Codable {
+struct Source: Codable {
     let id: String
     let name: String
     let description: String

@@ -13,6 +13,7 @@ import Foundation
 enum NewsAPIRequestPath: String {
     
     case sources = "/v2/top-headlines/sources?"
+    case headlines = "/v2/top-headlines?sources=*&"
     
     private var baseURL: String {
         "https://newsapi.org/"
@@ -47,6 +48,11 @@ class NewsAPIInteractor {
     
     func getSources(from path: String, completion: @escaping (Result<SourcesResponse?, Error>) -> Void) {
         guard let url = URL(string: path) else { return }
+        networkService.request(from: url, completion: completion)
+    }
+    
+    func getHeadlines(from path: String, for source: String, completion: @escaping (Result<HeadlinesResponse?, Error>) -> Void) {
+        guard let url = URL(string: path.replacingOccurrences(of: "*", with: source)) else { return }
         networkService.request(from: url, completion: completion)
     }
 }

@@ -51,6 +51,13 @@ class SourcesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.getHeadlinesForSource(at: indexPath.row) { [weak self] headlineViewModel in
+            DispatchQueue.main.async {
+                let headlinesVC = HeadlinesViewController(viewModel: headlineViewModel)
+                headlinesVC.title = self?.viewModel.nameOfSource(at: indexPath.row)
+                self?.navigationController?.pushViewController(headlinesVC, animated: true)
+            }
+        }
     }
     
     // MARK: - UITableViewDataSource methods

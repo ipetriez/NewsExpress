@@ -12,13 +12,14 @@ protocol SourceViewModelDelegate {
     func getSources()
     func nameOfSource(at index: Int) -> String
     func descriptionOfSource(at index: Int) -> String
+    func getHeadlinesForSource(at index: Int, completion: @escaping (HeadlinesViewModel) -> Void)
 }
 
 class SourcesViewModel: SourceViewModelDelegate {
     
     // MARK: Private properties
     
-    private var sources = [Sources]() {
+    private var sources = [Source]() {
         didSet {
             NotificationCenter.default.post(Notification(name: Notification.Name(NCKeys.sourcesHaveBeenUpdated.rawValue), object: nil))
         }
@@ -38,6 +39,19 @@ class SourcesViewModel: SourceViewModelDelegate {
             case .success(let response):
                 if let sourceResponse = response {
                     self?.sources = sourceResponse.sources
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func getHeadlinesForSource(at index: Int, completion: @escaping (HeadlinesViewModel) -> Void) {
+        NewsAPIInteractor.shared.getHeadlines(from: NewsAPIRequestPath.headlines.fullPath(), for: nameOfSource(at: index)) { result in
+            switch result {
+            case .success(let response):
+                if let headlinesResponse = response {
+                    completion(HeadlinesViewModel(with: headlinesResponse.articles))
                 }
             case .failure(let error):
                 print(error)
