@@ -32,7 +32,7 @@ class NewsDetailsViewModel: NewsDetailsViewModelDelegate {
     }
     
     var descriptionOfArticle: String {
-        article.description
+        article.description ?? ""
     }
     
     var linkForArticle: String {
@@ -48,7 +48,7 @@ class NewsDetailsViewModel: NewsDetailsViewModelDelegate {
     // MARK: - Public methods
     
     func getImage(completion: @escaping (UIImage) -> Void) {
-        guard let url = URL(string: article.urlToImage) else { return }
+        guard let url = URL(string: article.urlToImage ?? "") else { return }
         DispatchQueue.global(qos: .userInitiated).async {
             let urlContents = try? Data(contentsOf: url)
             DispatchQueue.main.async {

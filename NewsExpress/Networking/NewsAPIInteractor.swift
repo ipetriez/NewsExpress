@@ -20,7 +20,7 @@ enum NewsAPIRequestPath: String {
     }
     
     private var apiKey: String {
-        "apiKey=171748af94644eff83e028a74407ab1a"
+        "apiKey=023c3d1804fd4677adf09f4dc9088cd9"
     }
     
     func fullPath() -> String {

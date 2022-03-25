@@ -51,7 +51,7 @@ class HeadlinesViewModel: HeadlinesViewModelDelegate {
     
     func configure(_ cell: HeadlineTableViewCell, at indexPath: IndexPath) {
         let article = articles[indexPath.row]
-        setImage(from: article.urlToImage, to: cell)
+        setImage(from: article.urlToImage ?? "", to: cell)
         cell.titleLabel.text = article.title
         cell.descriptionLabel.text = article.description
         cell.dateLabel.text = article.publishedAt.components(separatedBy: "T").first
