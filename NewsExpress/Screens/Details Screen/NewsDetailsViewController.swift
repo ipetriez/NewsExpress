@@ -55,6 +55,7 @@ class NewsDetailsViewController: UIViewController {
         label.numberOfLines = 0
         label.textColor = .link
         label.isUserInteractionEnabled = true
+        label.addGestureRecognizer((UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel(_:)))))
         label.text = viewModel.linkForArticle
         return label
     }()
@@ -78,12 +79,21 @@ class NewsDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        configureTitleView()
         setupViews()
-        linkLabel.addGestureRecognizer((UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel(_:)))))
     }
     
     // MARK: - Private methods
+    
+    private func configureTitleView() {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.textAlignment = .center
+        label.text = viewModel.articleName
+        navigationItem.titleView = label
+    }
     
     private func setupViews() {
         view.backgroundColor = .white
@@ -92,7 +102,7 @@ class NewsDetailsViewController: UIViewController {
         view.addSubview(descriptionLabel)
         view.addSubview(linkLabel)
         
-        imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.standardOffset).isActive = true
         imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.standardOffset).isActive = true
         imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: Constants.standardInset).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: Constants.imageHeight).isActive = true

@@ -8,6 +8,7 @@
 import UIKit
 
 protocol NewsDetailsViewModelDelegate {
+    var articleName: String { get }
     var dateOfArticle: String? { get }
     var descriptionOfArticle: String { get }
     var linkForArticle: String { get }
@@ -21,6 +22,10 @@ class NewsDetailsViewModel: NewsDetailsViewModelDelegate {
     private let article: Article
     
     // MARK: - Public properties
+    
+    var articleName: String {
+        article.title
+    }
     
     var dateOfArticle: String? {
         article.publishedAt.components(separatedBy: "T").first
